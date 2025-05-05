@@ -25,7 +25,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       <div className="ml-4 flex-grow">
         <h3 className="text-base font-medium text-gray-800">{item.name}</h3>
         <p className="text-sm text-gray-500 mb-1">Category: {item.category}</p>
-        <p className="text-indigo-600 font-semibold">${item.price.toFixed(2)}</p>
+        <p className="text-claret font-semibold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(item.price)}</p>
       </div>
       
       {/* Quantity controls */}
@@ -48,8 +48,8 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       
       {/* Item total and remove button */}
       <div className="ml-6 flex flex-col items-end">
-        <span className="text-base font-medium text-gray-800">
-          ${(item.price * item.quantity).toFixed(2)}
+        <span className="text-base font-medium text-claret">
+          {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(item.price * item.quantity)}
         </span>
         <button 
           onClick={() => removeFromCart(item.id)}

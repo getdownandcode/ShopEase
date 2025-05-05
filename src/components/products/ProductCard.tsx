@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div 
-      className="group relative bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md"
+      className="group relative bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -54,49 +54,49 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
         />
       </div>
       
       {/* Product info */}
-      <div className="p-4">
-        <h3 className="text-lg font-medium text-gray-800 mb-1 truncate">{product.name}</h3>
+      <div className="p-5">
+        <h3 className="text-lg font-semibold text-gray-800 mb-2 truncate">{product.name}</h3>
         
-        <div className="flex items-center mb-2">
+        <div className="flex items-center mb-3">
           <div className="flex mr-2">
             {renderRating(product.rating)}
           </div>
-          <span className="text-xs text-gray-500">({product.rating})</span>
+          <span className="text-sm text-gray-500">({product.rating})</span>
         </div>
         
         <div className="flex justify-between items-center">
-          <span className="text-claret font-semibold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(product.price)}</span>
+          <span className="text-claret font-bold text-lg">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(product.price)}</span>
           
           <button 
             onClick={handleAddToCart}
-            className="bg-claret text-white p-2 rounded-full hover:bg-darkpurple hover:text-claret transition-colors"
+            className="bg-claret text-white p-2.5 rounded-full hover:bg-darkpurple hover:text-claret transition-colors shadow-md hover:shadow-lg"
             aria-label={`Add ${product.name} to cart`}
           >
-            <ShoppingCart className="w-4 h-4" />
+            <ShoppingCart className="w-5 h-5" />
           </button>
         </div>
       </div>
       
       {/* Hover overlay */}
       <div 
-        className={`absolute inset-0 bg-black/60 flex flex-col justify-center items-center p-4 transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-gradient-to-t from-black/80 to-black/60 flex flex-col justify-end items-center p-6 transition-opacity duration-300 ${
           isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <h3 className="text-lg font-semibold text-white mb-2 text-center">{product.name}</h3>
-        <p className="text-sm text-gray-200 mb-4 text-center line-clamp-3">{product.description}</p>
+        <h3 className="text-xl font-semibold text-white mb-3 text-center">{product.name}</h3>
+        <p className="text-gray-200 mb-6 text-center line-clamp-3">{product.description}</p>
         
-        <div className="flex space-x-2">
+        <div className="flex space-x-3">
           <button 
             onClick={handleAddToCart}
-            className="bg-claret text-white px-4 py-2 rounded-md hover:bg-darkpurple hover:text-claret transition-colors flex items-center"
+            className="bg-claret text-white px-6 py-2.5 rounded-lg hover:bg-darkpurple hover:text-claret transition-colors flex items-center shadow-lg"
           >
-            <ShoppingCart className="w-4 h-4 mr-1" />
+            <ShoppingCart className="w-5 h-5 mr-2" />
             Add to Cart
           </button>
         </div>

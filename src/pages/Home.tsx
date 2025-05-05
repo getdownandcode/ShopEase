@@ -40,8 +40,12 @@ const Home: React.FC = () => {
       </div>
       
       {/* Featured products section */}
-      <div id="featured" className="bg-white py-8">
-        <ProductList products={featuredProducts} title="Featured Products" />
+      <div id="featured" className="py-12 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">Featured Products</h2>
+          <p className="text-gray-600 mb-8">Discover our handpicked selection of premium products</p>
+          <ProductList products={featuredProducts} />
+        </div>
       </div>
     </div>
   );

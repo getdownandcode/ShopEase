@@ -22,7 +22,7 @@ const Checkout: React.FC = () => {
       <div className="space-y-3 mb-6">
         <div className="flex justify-between text-gray-600">
           <span>Subtotal ({totalItems} items)</span>
-          <span>${totalPrice.toFixed(2)}</span>
+          <span>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(totalPrice)}</span>
         </div>
         <div className="flex justify-between text-gray-600">
           <span>Shipping</span>
@@ -30,11 +30,11 @@ const Checkout: React.FC = () => {
         </div>
         <div className="flex justify-between text-gray-600">
           <span>Tax</span>
-          <span>${(totalPrice * 0.08).toFixed(2)}</span>
+          <span>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(totalPrice * 0.08)}</span>
         </div>
         <div className="border-t pt-3 mt-3 flex justify-between font-semibold text-gray-800">
           <span>Total</span>
-          <span>${(totalPrice + (totalPrice * 0.08)).toFixed(2)}</span>
+          <span className="text-claret">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(totalPrice + (totalPrice * 0.08))}</span>
         </div>
       </div>
       
